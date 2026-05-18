@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 dependencies = [
-    "nexau @ git+https://github.com/nex-agi/NexAU.git@v0.3.9",
+    "nexau",
     "langfuse>=2.0.0",
     "pyyaml>=6.0",
     "python-dotenv>=1.0",
@@ -28,3 +28,6 @@ include = ["agent_debugger_core*"]
 
 [tool.setuptools.package-data]
 "agent_debugger_core" = ["runtime/*.yaml", "runtime/*.md", "runtime/tool_descriptions/*.yaml"]
+
+[tool.uv.sources]
+nexau = { path = "../../../../../../NexAU" }

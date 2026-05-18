@@ -13,3 +13,6 @@ runs/
 agents/explore_agent/*/_patched_*.yaml
 /adb_runtime/
 agents/evolve_agent/skills/agent-debugger-cli/*.whl
+docker/ahe-runtime/*.tar.gz
+docker/ahe-bench-sample-runtime/*.iso
+docker/ahe-bench-sample-runtime/*.ttf

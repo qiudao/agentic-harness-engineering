@@ -1,0 +1,49 @@
+_base: "../base.yaml"
+_name: "deepseek-v4-smoke"
+_description: "Low-concurrency DeepSeek V4 smoke run for Terminal-Bench sample on E2B"
+_tags: ["deepseek", "smoke"]
+
+dataset: "terminal-bench-sample@2.0"
+max_iterations: 1
+target_pass_rate: 0.99
+
+harbor:
+  k: 1
+  n_concurrent: 2
+  force_build: false
+  e2b_sandbox_timeout: 3600
+
+llm:
+  api_key: "${LLM_API_KEY}"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-v4-pro"
+
+code_agent_patch:
+  tool_call_mode: openai
+  llm_config:
+    api_type: openai_chat_completion
+    stream: true
+
+evolve_agent:
+  tool_call_mode: openai
+  llm_config:
+    api_key: "${LLM_API_KEY}"
+    base_url: "https://api.deepseek.com"
+    model: "deepseek-v4-pro"
+    api_type: openai_chat_completion
+    stream: true
+
+explore_agent_patch:
+  tool_call_mode: openai
+  llm_config:
+    api_type: openai_chat_completion
+    stream: true
+
+explore_agent:
+  enabled: false
+
+agent_debugger:
+  enabled: false
+
+notify:
+  enabled: false

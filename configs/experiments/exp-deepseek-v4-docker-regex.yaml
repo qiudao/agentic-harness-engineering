@@ -1,0 +1,49 @@
+_base: "../base.yaml"
+_name: "deepseek-v4-docker-regex"
+_description: "Single-task DeepSeek V4 smoke run on local Docker"
+_tags: ["deepseek", "smoke", "docker"]
+
+path: "../datasets/terminal-bench-2-0-sample/sample/regex-log"
+max_iterations: 1
+target_pass_rate: 0.99
+
+harbor:
+  k: 1
+  env: "docker"
+  n_concurrent: 1
+  force_build: true
+
+llm:
+  api_key: "${LLM_API_KEY}"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-v4-pro"
+
+code_agent_patch:
+  tool_call_mode: openai
+  llm_config:
+    api_type: openai_chat_completion
+    stream: true
+
+evolve_agent:
+  tool_call_mode: openai
+  llm_config:
+    api_key: "${LLM_API_KEY}"
+    base_url: "https://api.deepseek.com"
+    model: "deepseek-v4-pro"
+    api_type: openai_chat_completion
+    stream: true
+
+explore_agent_patch:
+  tool_call_mode: openai
+  llm_config:
+    api_type: openai_chat_completion
+    stream: true
+
+explore_agent:
+  enabled: false
+
+agent_debugger:
+  enabled: false
+
+notify:
+  enabled: false
